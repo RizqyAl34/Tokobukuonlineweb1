@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Pemesanan Buku</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Form Pemesanan Buku</h2>
+  <form onsubmit="return konfirmasiPesan()">
+    <label>Nama Pemesan</label>
+    <input type="text" id="nama" required>
+
+    <label>Alamat Pengiriman</label>
+    <textarea id="alamat" required></textarea>
+
+    <label>Metode Pembayaran</label>
+    <select id="bayar">
+      <option>Transfer Bank</option>
+      <option>QRIS</option>
+      <option>COD</option>
+    </select>
+
+    <button type="submit">Kirim Pesanan</button>
+  </form>
+
+  <script>
+    function konfirmasiPesan() {
+      const nama = document.getElementById("nama").value;
+      const alamat = document.getElementById("alamat").value;
+      const bayar = document.getElementById("bayar").value;
+
+      if (nama && alamat) {
+        alert(`Pesanan atas nama ${nama} berhasil!\nPembayaran: ${bayar}`);
+        return true;
+      } else {
+        alert("Harap isi semua data!");
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>

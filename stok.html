@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Katalog Buku</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js"></script>
+</head>
+<body onload="loadKatalog()">
+  <h2>Katalog Buku</h2>
+  <table id="tabelBuku" border="1">
+    <tr>
+      <th>Cover</th><th>Kode</th><th>Judul</th><th>Jenis</th><th>Edisi</th><th>Stok</th><th>Harga</th>
+    </tr>
+  </table>
+  <button onclick="tambahBaris()">Tambah Buku</button>
+
+  <script>
+    function loadKatalog() {
+      const table = document.getElementById("tabelBuku");
+      dataKatalogBuku.forEach(buku => {
+        const row = table.insertRow();
+        row.innerHTML = `
+          <td><img src="${buku.cover}" alt="${buku.namaBarang}" class="cover"></td>
+          <td>${buku.kodeBarang}</td>
+          <td>${buku.namaBarang}</td>
+          <td>${buku.jenisBarang}</td>
+          <td>${buku.edisi}</td>
+          <td>${buku.stok}</td>
+          <td>${buku.harga}</td>
+        `;
+      });
+    }
+
+    function tambahBaris() {
+      const table = document.getElementById("tabelBuku");
+      const row = table.insertRow();
+      row.innerHTML = `
+        <td><input placeholder="Kode"></td>
+        <td><input placeholder="Judul"></td>
+        <td><input placeholder="Jenis"></td>
+        <td><input placeholder="Edisi"></td>
+        <td><input placeholder="Stok"></td>
+        <td><input placeholder="Harga"></td>
+      `;
+    }
+  </script>
+</body>
+</html>

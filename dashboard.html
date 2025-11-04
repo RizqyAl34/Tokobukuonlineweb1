@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Toko Buku Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="greeting()">
+  <h2 id="greet"></h2>
+  <nav>
+    <button onclick="location.href='stok.html'">📚 Katalog Buku</button>
+    <button onclick="location.href='checkout.html'">🛒 Pemesanan</button>
+    <button onclick="location.href='tracking.html'">🚚 Tracking</button>
+    <button onclick="logout()">🚪 Logout</button>
+  </nav>
+
+  <script>
+    function greeting() {
+      const user = JSON.parse(localStorage.getItem("userLogin"));
+      const hour = new Date().getHours();
+      let greet = "Selamat Malam";
+      if (hour < 10) greet = "Selamat Pagi";
+      else if (hour < 15) greet = "Selamat Siang";
+      else if (hour < 18) greet = "Selamat Sore";
+
+      document.getElementById("greet").innerText =
+        `${greet}, ${user ? user.nama : "Pengunjung"}!`;
+    }
+
+    function logout() {
+      localStorage.removeItem("userLogin");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
